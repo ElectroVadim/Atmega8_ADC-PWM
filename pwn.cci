@@ -1,0 +1,7 @@
+VERSION:3 SOURCE_TIMESTAMP:463B49C0
+NODE:I LEVEL:0 LINE:23 "D:\programs\avr\inc\mega8.h"
+NODE:I LEVEL:0 LINE:24 "D:\programs\avr\inc\stdio.h"
+NODE:I LEVEL:0 LINE:25 "D:\programs\avr\inc\delay.h"
+NODE:M LEVEL:0 LINE:27 "ADC_VREF_TYPE"
+NODE:F LEVEL:0 LINE:28 "read_adc(unsigned char adc_input)"
+NODE:F LEVEL:0 LINE:38 "main(void)"

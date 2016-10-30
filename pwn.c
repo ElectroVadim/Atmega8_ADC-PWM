@@ -1,0 +1,56 @@
+/*****************************************************
+This program was produced by the
+CodeWizardAVR V2.05.0 Professional
+Automatic Program Generator
+© Copyright 1998-2010 Pavel Haiduc, HP InfoTech s.r.l.
+http://www.hpinfotech.com
+
+Project : 
+Version : 
+Date    : 21.01.2015
+Author  : 
+Company : 
+Comments: 
+
+
+Chip type               : ATmega8
+Program type            : Application
+AVR Core Clock frequency: 8,000000 MHz
+Memory model            : Small
+External RAM size       : 0
+Data Stack size         : 256
+*****************************************************/
+#include <mega8.h>
+#include <stdio.h>
+#include <delay.h>
+
+#define ADC_VREF_TYPE 0x60
+unsigned char read_adc (unsigned char adc_input)
+{
+	ADMUX=adc_input | (ADC_VREF_TYPE & 0xff);
+	delay_us(10);
+	ADCSRA|=0x40;
+	while ((ADCSRA & 0x10)==0);
+	ADCSRA|=0x10;
+	return ADCH;
+}
+
+void main(void)
+{
+	DDRB = 0xFF;
+	DDRC = 0x00;
+          
+    ASSR=0x00;
+    TCCR2=0x6C;
+    TCNT2=0x00;
+    OCR2=0x00;
+	
+	ADMUX=ADC_VREF_TYPE & 0xff;
+	ADCSRA=0x87;
+
+	while(1)
+	{
+	    OCR2 = read_adc(0);
+	}
+;
+}
